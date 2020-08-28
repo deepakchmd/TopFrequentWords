@@ -4,4 +4,4 @@ Download the jar from the link below and run in terminal as > java -jar xxx.jar 
 
 https://github.com/deepakchmd/TopFrequentWords/blob/master/build/libs/TopWordFrequency-1.0-SNAPSHOT.jar
 
-Example: java -jar TopWordFrequency-1.0-SNAPSHOT.jar https://howtodoinjava.com/
+Example: java -jar TopWordFrequency-1.0-SNAPSHOT.jar 
