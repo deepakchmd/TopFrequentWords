@@ -1,15 +1,11 @@
 package com.dpchmd.assignment;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.PriorityQueue;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class TopTenFrequentWords {
 
@@ -18,8 +14,14 @@ public class TopTenFrequentWords {
 		Document doc;
 		String str = "";
 		try {
+
+			System.out.println("\n\nThis program wil scan through a given webpage via URL, and display the top 10 frequent words and the top 10 frequent word pairs (two words in the same order) along with their frequency\n");
+			System.out.println("Please enter the URL that needs to scanned: ");
+			Scanner sc = new Scanner(System.in);
+			String url = sc.nextLine();
+
 			// need http protocol
-			doc = Jsoup.connect("https://howtodoinjava.com/").get();
+			doc = Jsoup.connect(url).get();
 			str = doc.body().text(); // "An example link"
 			// System.out.println(">> " + str);
 		} catch (IOException e) {
@@ -35,7 +37,7 @@ public class TopTenFrequentWords {
 		 * For words
 		 */
 		List<Node> topFreqWordlist = topKFrequent(wordsArr, 10);
-		Collections.sort(topFreqWordlist, new NodeComparator()); 
+		Collections.sort(topFreqWordlist, new NodeComparator());
 		System.out.println("\n/*** Top 10 words: ***/ \n");
 		int j = 1;
 		for(Node it:topFreqWordlist) {
@@ -52,7 +54,7 @@ public class TopTenFrequentWords {
 		}
 
 		List<Node> topFreqWordPairslist = topKFrequent(wordPairs.toArray(new String[0]), 10);
-		Collections.sort(topFreqWordPairslist, new NodeComparator()); 
+		Collections.sort(topFreqWordPairslist, new NodeComparator());
 		System.out.println("\n/*** Top 10 word pairs: ***/ \n");
 		j = 1;
 		for(Node it:topFreqWordPairslist) {
